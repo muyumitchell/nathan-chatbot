@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Remi — Nathan Digital AI Agent</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- BACKGROUND -->
+  <div class="page-bg" id="pageBg">
+    <div class="grid"></div>
+    <div class="orb orb1"></div>
+    <div class="orb orb2"></div>
+
+    <div class="brand">NATHAN<span> DIGITAL</span></div>
+    <div class="ticker-wrap">
+      <div class="ticker-track">
+        <span>HRMS</span>
+        <span>•</span>
+        <span>AI AGENTS</span>
+        <span>•</span>
+        <span>AUTOMATION</span>
+        <span>•</span>
+        <span>HRMS</span>
+        <span>•</span>
+        <span>AI AGENTS</span>
+        <span>•</span>
+        <span>AUTOMATION</span>
+        <span>•</span>
+      </div>
+    </div>
+
+    <div class="footer-tag">TRUSTED BY 2,000+ BUSINESSES ACROSS THE UAE</div>
+  </div>
+
+  <!-- FLOATING BUBBLE BUTTON -->
+  <div class="bubble-wrap">
+    <div class="bubble-label">Meet Remi 👋</div>
+    <button class="bubble-btn" id="bubbleBtn" aria-label="Chat with Remi">
+      <span class="bubble-icon">🤖</span>
+      <span class="unread-badge" id="unreadBadge">1</span>
+    </button>
+  </div>
+
+  <!-- CHAT WINDOW -->
+  <div class="chat-window" id="chatWindow">
+
+    <!-- HEADER -->
+    <div class="chat-header">
+      <div class="kova-avatar">R</div>
+      <div class="header-text">
+        <div class="header-name">Remi</div>
+        <div class="header-sub">
+          <span class="dot"></span>
+          <span id="agentLabel">Recruitment Agent</span>
+        </div>
+      </div>
+      <button class="mic-btn" id="micBtn" aria-label="Voice input" title="Speak to Remi">🎤</button>
+      <button class="close-btn" id="closeBtn" aria-label="Close chat">✕</button>
+    </div>
+
+    <!-- AGENT SELECTOR -->
+    <div class="agent-selector">
+      <button class="agent-chip active" data-agent="recruitment" data-label="Recruitment Agent">🧑‍💼 Recruitment</button>
+      <button class="agent-chip" data-agent="payroll" data-label="Payroll Agent">💰 Payroll</button>
+      <button class="agent-chip" data-agent="compliance" data-label="Compliance Agent">🛡️ Compliance</button>
+      <button class="agent-chip" data-agent="employee" data-label="Employee Self-Service">🙋 Employee</button>
+    </div>
+
+    <!-- MESSAGES -->
+    <div class="messages" id="messages"></div>
+
+    <!-- INPUT -->
+    <div class="write">
+      <div class="input-wrap">
+        <input
+          class="chat-input"
+          id="chatInput"
+          placeholder="Ask Remi anything..."
+          autocomplete="off"
+        />
+        <button class="send-btn" id="sendBtn" aria-label="Send message">
+          <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" fill="none" stroke-width="5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M60.7,53.6,50,64.3m0,0L39.3,53.6M50,64.3V35.7m0,46.4A32.1,32.1,0,1,1,82.1,50,32.1,32.1,0,0,1,50,82.1Z"/>
+          </svg>
+        </button>
+      </div>
+    </div>
+
+    <!-- FOOTER -->
+    <div class="footer-brand">
+      Powered by Nathan Digital · nathandigital.com
+    </div>
+
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
