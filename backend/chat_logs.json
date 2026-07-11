@@ -123,5 +123,55 @@
     "question": "how long is the job posting?",
     "agent": "recruitment",
     "timestamp": "2026-07-10T11:16:51.858Z"
+  },
+  {
+    "question": " Ask me about leave requests, claims, or HR letters.",
+    "agent": "employee",
+    "timestamp": "2026-07-10T11:42:28.707Z"
+  },
+  {
+    "question": "Ask me about labor law compliance,",
+    "agent": "compliance",
+    "timestamp": "2026-07-10T11:44:11.385Z"
+  },
+  {
+    "question": "Ask me about labor law compliance,",
+    "agent": "recruitment",
+    "timestamp": "2026-07-10T11:44:29.722Z"
+  },
+  {
+    "question": "Ask me about job posting",
+    "agent": "recruitment",
+    "timestamp": "2026-07-11T09:48:39.130Z"
+  },
+  {
+    "question": " Ask me about job posting",
+    "agent": "recruitment",
+    "timestamp": "2026-07-11T09:54:40.921Z"
+  },
+  {
+    "question": " Ask me about job posting",
+    "agent": "recruitment",
+    "timestamp": "2026-07-11T10:13:57.226Z"
+  },
+  {
+    "question": " end-of-service benefits.",
+    "agent": "payroll",
+    "timestamp": "2026-07-11T10:14:14.885Z"
+  },
+  {
+    "question": "Ask me about job posting",
+    "agent": "recruitment",
+    "timestamp": "2026-07-11T10:25:17.475Z"
+  },
+  {
+    "question": " Ask me about salary processing",
+    "agent": "payroll",
+    "timestamp": "2026-07-11T10:25:37.094Z"
+  },
+  {
+    "question": "Ask me about labor law compliance",
+    "agent": "compliance",
+    "timestamp": "2026-07-11T10:25:59.593Z"
   }
 ]

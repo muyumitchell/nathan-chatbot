@@ -17,6 +17,7 @@ for (let i = 0; i < 18; i++) {
 const bubbleBtn = document.getElementById('bubbleBtn');
 const unreadBadge = document.getElementById('unreadBadge');
 const chatWindow = document.getElementById('chatWindow');
+const chatWindowWrap = document.getElementById('chatWindowWrap');
 const closeBtn = document.getElementById('closeBtn');
 const messagesEl = document.getElementById('messages');
 const chatInput = document.getElementById('chatInput');
@@ -38,7 +39,7 @@ const AGENT_GREETINGS = {
 };
 
 // ── START: chat window starts hidden ──
-chatWindow.classList.add('hidden');
+chatWindowWrap.classList.add('hidden');
 
 // ── HELPER: get current time ──
 function getTime() {
@@ -221,12 +222,12 @@ agentChips.forEach(chip => {
     // Reset conversation context for the new specialist
     conversationHistory = [];
     addMessage(AGENT_GREETINGS[newAgent], 'bot');
+    updateDemoVisibility(); // show/hide payslip button based on new agent
   });
 });
 
-// ── EVENT: open chat ──
 function openChat() {
-  chatWindow.classList.remove('hidden');
+  chatWindowWrap.classList.remove('hidden');
   chatWindow.style.animation = 'none';
   chatWindow.offsetHeight;
   chatWindow.style.animation = 'bounce-in-right 1.1s both';
@@ -237,14 +238,13 @@ function openChat() {
     chatOpened = true;
     addMessage(AGENT_GREETINGS[currentAgent], 'bot');
   }
+  updateDemoVisibility(); // add this line
 }
 
 function closeChat() {
-  console.log('closeChat was triggered!'); // TEMP DEBUG
-  console.trace(); // TEMP DEBUG - shows us exactly what called this
   chatWindow.style.animation = 'bounce-out-left 1.5s both';
   setTimeout(() => {
-    chatWindow.classList.add('hidden');
+    chatWindowWrap.classList.add('hidden');
   }, 1500);
 }
 
@@ -264,4 +264,66 @@ chatInput.addEventListener('keypress', (e) => {
     chatInput.value = '';
     sendMessage(text);
   }
+});
+// ── PAYSLIP MINI-DEMO ──
+const payslipTrigger = document.getElementById('payslipTrigger');
+const openPayslipDemo = document.getElementById('openPayslipDemo');
+const payslipOverlay = document.getElementById('payslipOverlay');
+const payslipClose = document.getElementById('payslipClose');
+const calcPayslipBtn = document.getElementById('calcPayslip');
+const payslipResult = document.getElementById('payslipResult');
+const payBasic = document.getElementById('payBasic');
+const payHousing = document.getElementById('payHousing');
+const payDeductions = document.getElementById('payDeductions');
+
+// Show/hide the demo trigger button depending on which agent is active
+function updateDemoVisibility() {
+  if (currentAgent === 'payroll') {
+    payslipTrigger.classList.remove('hidden');
+  } else {
+    payslipTrigger.classList.add('hidden');
+  }
+}
+
+openPayslipDemo.addEventListener('click', () => {
+  payslipOverlay.classList.add('visible');
+});
+
+payslipClose.addEventListener('click', () => {
+  payslipOverlay.classList.remove('visible');
+  payslipResult.classList.remove('visible');
+  payslipResult.innerHTML = '';
+  payBasic.value = '';
+  payHousing.value = '';
+  payDeductions.value = '';
+});
+
+calcPayslipBtn.addEventListener('click', () => {
+  const basic = parseFloat(payBasic.value) || 0;
+  const housing = parseFloat(payHousing.value) || 0;
+  const deductions = parseFloat(payDeductions.value) || 0;
+
+  if (basic <= 0) {
+    payslipResult.innerHTML = '<span style="color:#ef4444;">Please enter a valid basic salary.</span>';
+    payslipResult.classList.add('visible');
+    return;
+  }
+
+  const grossPay = basic + housing;
+  const netPay = grossPay - deductions;
+
+  payslipResult.innerHTML = `
+    <div class="result-row"><span>Basic Salary</span><span>AED ${basic.toLocaleString()}</span></div>
+    <div class="result-row"><span>Housing Allowance</span><span>AED ${housing.toLocaleString()}</span></div>
+    <div class="result-row"><span>Gross Pay</span><span>AED ${grossPay.toLocaleString()}</span></div>
+    <div class="result-row"><span>Deductions</span><span>- AED ${deductions.toLocaleString()}</span></div>
+    <div class="result-row result-total"><span>Net Pay</span><span>AED ${netPay.toLocaleString()}</span></div>
+  `;
+  payslipResult.classList.add('visible');
+
+  // Have Remi comment on the result naturally, as if aware of it
+  addMessage(
+    `Here's a quick payslip breakdown based on what you entered — net pay comes to AED ${netPay.toLocaleString()}. In the real Nathan Digital HRMS, this entire calculation runs automatically every pay cycle, with full compliance built in. Want to know more about how automated payroll works?`,
+    'bot'
+  );
 });

@@ -45,6 +45,8 @@
   </div>
 
   <!-- CHAT WINDOW -->
+ <!-- CHAT WINDOW -->
+<div class="chat-window-wrap hidden" id="chatWindowWrap">
   <div class="chat-window" id="chatWindow">
 
     <!-- HEADER -->
@@ -69,8 +71,32 @@
       <button class="agent-chip" data-agent="employee" data-label="Employee Self-Service">🙋 Employee</button>
     </div>
 
-    <!-- MESSAGES -->
+  <!-- MESSAGES -->
     <div class="messages" id="messages"></div>
+
+    <!-- PAYSLIP MINI-DEMO (shown only for Payroll agent) -->
+
+<!-- PAYSLIP MINI-DEMO (shown only for Payroll agent) -->
+<div class="mini-demo-trigger hidden" id="payslipTrigger">
+  <button class="demo-btn" id="openPayslipDemo">🧮 Try the Payslip Calculator</button>
+</div>
+
+<div class="mini-demo-overlay" id="payslipOverlay">
+  <div class="mini-demo-card">
+    <div class="mini-demo-header">
+      <span>Payslip Calculator</span>
+      <button class="mini-demo-close" id="payslipClose">✕</button>
+    </div>
+    <label class="demo-label">Basic Salary (AED)</label>
+    <input type="number" id="payBasic" class="demo-input" placeholder="e.g. 10000" />
+    <label class="demo-label">Housing Allowance (AED)</label>
+    <input type="number" id="payHousing" class="demo-input" placeholder="e.g. 2000" />
+    <label class="demo-label">Other Deductions (AED)</label>
+    <input type="number" id="payDeductions" class="demo-input" placeholder="e.g. 500" />
+    <button class="demo-calc-btn" id="calcPayslip">Calculate Payslip</button>
+    <div class="demo-result" id="payslipResult"></div>
+  </div>
+</div>
 
     <!-- INPUT -->
     <div class="write">
@@ -95,7 +121,6 @@
     </div>
 
   </div>
+  </div>
 
   <script src="script.js"></script>
-</body>
-</html>
